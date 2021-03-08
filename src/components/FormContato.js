@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { generateUID } from '../utils/helpers';
 
-export default function FormContato(){
+export default function FormContato(props){
     const [nome, setNome] = useState('');
     const [instagram, setInstagram] = useState('');
 
@@ -9,6 +9,15 @@ export default function FormContato(){
             e.preventDefault();
 
             console.log('Novo contato: ', {nome, instagram})
+            
+            props.onCreateContato({
+                nome,
+                instagram,
+                id: generateUID()
+            })
+
+            setNome('');
+            setInstagram('');       
         }
 
     return(

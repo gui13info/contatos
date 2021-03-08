@@ -24,6 +24,13 @@ function App() {
       },
     ]})
 
+
+  function createContato(contato){
+    setState((currentState) => ({
+      contatos: currentState.contatos.concat([contato])
+    }))
+  }
+
   function removeContato(contato){
     setState((currentState) => ({
       contatos: currentState.contatos.filter((c) => {
@@ -35,7 +42,9 @@ function App() {
   return (
     <div>
       <h1>Contatos</h1>
-      <FormContato />
+      <FormContato 
+        onCreateContato={createContato}
+      />
       <ListaContatos 
       contatos={state.contatos}
       onDeleteContato={removeContato}
