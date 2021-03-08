@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { generateUID } from '../utils/helpers';
+import TextField from '@material-ui/core/TextField';
+import SaveButton from './SaveButton';
 
 export default function FormContato(props){
     const [nome, setNome] = useState('');
@@ -25,23 +27,28 @@ export default function FormContato(props){
             <h1>Novo Contato</h1>
 
             <form onSubmit={handleSubmit}>
-                <div>
-                    <input 
-                        type="text" 
-                        name="nome" 
-                        value={nome}
-                        onChange={({target}) => setNome(target.value)}
-                        placeholder="Nome"
-                    />
-                    <input 
-                        type="text" 
-                        name="instagram" 
-                        value={instagram}
-                        onChange={({target}) => setInstagram(target.value)}
-                        placeholder="Instragram"
-                    />
-                    <button>Adicionar contato</button>
-                </div>
+                    <div className="text-field">
+                        <TextField 
+                            type="text" 
+                            name="nome" 
+                            value={nome}
+                            onChange={({target}) => setNome(target.value)}
+                            placeholder="Nome"
+                            fullWidth
+                        />
+                    </div>
+
+                    <div className="text-field">
+                        <TextField 
+                            type="text" 
+                            name="instagram" 
+                            value={instagram}
+                            onChange={({target}) => setInstagram(target.value)}
+                            placeholder="Instragram"
+                            fullWidth
+                        />
+                    </div>
+                    <SaveButton />
             </form>
         </div>
     );

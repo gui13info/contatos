@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Route } from 'react-router-dom'
 import ListaContatos from './components/ListaContatos';
 import FormContato from './components/FormContato';
+import Bar from './components/Bar';
 
 import './global.css';
 
@@ -42,21 +43,23 @@ function App() {
 
   return (
     <div>
-      <h1>Contatos</h1>
-      <Route exact path='/' render={() => (
-        <ListaContatos 
-        contatos={state.contatos}
-        onDeleteContato={removeContato}
-        />
-      )} />
-      <Route path="/create" render={({history}) => (
-        <FormContato 
-          onCreateContato={(contato) => {
-            createContato(contato)
-            history.push('/')
-          }}
-        />
-      )} />
+      <Bar />
+      <div className="container">
+        <Route exact path='/' render={() => (
+          <ListaContatos 
+          contatos={state.contatos}
+          onDeleteContato={removeContato}
+          />
+        )} />
+        <Route path="/create" render={({history}) => (
+          <FormContato 
+            onCreateContato={(contato) => {
+              createContato(contato)
+              history.push('/')
+            }}
+          />
+        )} />
+      </div>
       
     </div>
   );
