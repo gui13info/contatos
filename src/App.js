@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import ListaContatos from './components/ListaContatos';
 import './global.css';
 
 function App() {
-  let state= {
+  const [state, setState] = useState({
     contatos: [
       {
         "id": "0",
@@ -19,12 +20,23 @@ function App() {
         "nome": "Maria",
         "instagram": "@mari13"
       },
-    ]
+    ]})
+
+  function removeContato(contato){
+    setState((currentState) => ({
+      contatos: currentState.contatos.filter((c) => {
+        return c.id !== contato.id
+      })
+    }))
   }
+
   return (
     <div>
       <h1>Contatos</h1>
-      <ListaContatos contatos={state.contatos}/>
+      <ListaContatos 
+      contatos={state.contatos}
+      onDeleteContato={removeContato}
+      />
     </div>
   );
 }

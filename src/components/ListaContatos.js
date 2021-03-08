@@ -9,7 +9,7 @@ export default function ListaContatos(props){
                     <li key={contato.id}>
                         <h4>{contato.nome}</h4>
                         <p>{contato.instagram}</p>
-                        <button>Excluir</button>
+                        <button onClick={() => props.onDeleteContato(contato)}>Excluir</button>
                     </li>
                 ))}
             </ul>
