@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import ListaContatos from './components/ListaContatos';
+import FormContato from './components/FormContato';
+
 import './global.css';
 
 function App() {
@@ -33,6 +35,7 @@ function App() {
   return (
     <div>
       <h1>Contatos</h1>
+      <FormContato />
       <ListaContatos 
       contatos={state.contatos}
       onDeleteContato={removeContato}
